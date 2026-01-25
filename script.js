@@ -146,7 +146,16 @@ viewport.addEventListener("wheel", e => {
 
   e.preventDefault();
 
-  zoomVelocity += -e.deltaY * ZOOM_SENSITIVITY;
+  // Normalize mouse wheels vs trackpads
+  let delta = e.deltaY;
+
+  // Firefox / Windows wheels can be huge
+  delta = Math.max(-120, Math.min(120, delta));
+
+  // Convert to smooth virtual scroll units
+  delta = delta / 120;
+
+  zoomVelocity += -delta * 0.08;
 
 }, { passive: false });
 
@@ -629,4 +638,5 @@ mobileExit.addEventListener("click", () => {
   mobileProject.hidden = true;
   mobileStack.innerHTML = "";
   activeProject = null;
+
 });
