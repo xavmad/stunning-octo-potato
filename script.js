@@ -112,8 +112,8 @@ viewport.addEventListener("wheel", e => {
   const mouseX = e.clientX;
   const mouseY = e.clientY;
 
-  const worldX = (mouseX - originX) / scale;
-  const worldY = (mouseY - originY) / scale;
+  const worldX = (mouseX - targetOriginX) / targetScale;
+  const worldY = (mouseY - targetOriginY) / targetScale;
 
   const zoom = Math.pow(1.0015, -e.deltaY);
 
@@ -607,3 +607,4 @@ mobileExit.addEventListener("click", () => {
   activeProject = null;
 
 });
+
