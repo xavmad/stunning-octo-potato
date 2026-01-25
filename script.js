@@ -124,6 +124,10 @@ viewport.addEventListener("wheel", e => {
 
   targetOriginX = mouseX - worldX * targetScale;
   targetOriginY = mouseY - worldY * targetScale;
+
+  originX = targetOriginX;
+  originY = targetOriginY;
+
 });
 
 
@@ -607,4 +611,5 @@ mobileExit.addEventListener("click", () => {
   activeProject = null;
 
 });
+
 
