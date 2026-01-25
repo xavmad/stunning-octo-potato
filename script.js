@@ -117,18 +117,21 @@ viewport.addEventListener("wheel", e => {
 
   const zoom = Math.pow(1.0015, -e.deltaY);
 
-  targetScale = Math.min(
-    Math.max(targetScale * zoom, MIN_SCALE),
+  const newScale = Math.min(
+    Math.max(scale * zoom, MIN_SCALE),
     MAX_SCALE
   );
 
-  targetOriginX = mouseX - worldX * targetScale;
-  targetOriginY = mouseY - worldY * targetScale;
+  scale = newScale;
 
-  originX = targetOriginX;
-  originY = targetOriginY;
+  originX = mouseX - worldX * scale;
+  originY = mouseY - worldY * scale;
 
+  targetScale = scale;
+  targetOriginX = originX;
+  targetOriginY = originY;
 });
+
 
 
 
@@ -611,6 +614,7 @@ mobileExit.addEventListener("click", () => {
   activeProject = null;
 
 });
+
 
 
 
