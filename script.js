@@ -513,6 +513,9 @@ function activateGroup(project) {
     targetOriginX = CAMERA_CENTER_X - CENTER_X * scale;
     targetOriginY = CAMERA_CENTER_Y - CENTER_Y * scale;
 
+    // Make sure it focuses smoothly and is properly zoomed into the left side
+    scale += (targetScale - scale) * 0.1;
+
     setTimeout(() => {
       descriptions.classList.add("visible");
 
@@ -524,6 +527,7 @@ function activateGroup(project) {
 
   }, 520);
 }
+
 
 
 /* =====================================================
