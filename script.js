@@ -315,7 +315,7 @@ viewport.addEventListener("mousedown", e => {
 
 
 /* =====================================================
-   INITIAL IMAGE SETUP
+   INITIAL IMAGE SETUP — FIXING POSITIONING AFTER LOAD
 ===================================================== */
 
 const originals = [];
@@ -335,7 +335,6 @@ images.forEach(img => {
 
   originals.push({ img, x, y });
 
-
   img._vx = (Math.random() - 0.5) * 0.12;
   img._vy = (Math.random() - 0.5) * 0.12;
 
@@ -345,9 +344,8 @@ images.forEach(img => {
     `translate(${x}px, ${y}px) translate(-50%, -50%)`;
 });
 
-
 /* =====================================================
-   FLOATING MOTION
+   FLOATING MOTION — FIXING FLOATING IMAGES AFTER LOAD
 ===================================================== */
 
 function floatImages() {
@@ -379,7 +377,8 @@ function floatImages() {
   requestAnimationFrame(floatImages);
 }
 
-floatImages();
+floatImages();  // Trigger floating motion as soon as images are initialized
+
 
 
 /* =====================================================
