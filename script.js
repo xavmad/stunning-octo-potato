@@ -421,16 +421,17 @@ images.forEach(img => {
    GROUP LOGIC — LEFT SIDE ADAPTIVE SPIRAL (FIXED)
 ===================================================== */
 
-function activateGroup(project) {
+let isZooming = false; // Flag to track if zoom transition is in progress
 
-  // If zooming is in progress, immediately stop the zoom and reset camera
+function activateGroup(project) {
+  // Immediately stop zoom if it's in progress
   if (isZooming) {
-    // Immediately reset zoom to 1 and stop the zoom transition
-    scale = 1;
+    // End the zoom transition immediately and reset camera state
+    scale = 1;  // Stop zooming
     targetScale = 1;
-    targetOriginX = CAMERA_CENTER_X - window.innerWidth * 0.4;  // Left-center camera positioning
+    targetOriginX = CAMERA_CENTER_X - window.innerWidth * 0.4;  // Set camera to left-center
     targetOriginY = CAMERA_CENTER_Y - window.innerHeight * 0.5;
-    isZooming = false;  // Stop zooming state
+    isZooming = false;  // Stop zoom state
   }
 
   storedScale = targetScale;
@@ -544,6 +545,7 @@ function activateGroup(project) {
 
   }, 520);
 }
+
 
 
 
