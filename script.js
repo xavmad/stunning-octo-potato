@@ -895,12 +895,21 @@ projectButtons.forEach(button => {
   button.addEventListener('click', (e) => {
     const projectId = e.target.dataset.project;  // Get the project ID from the button's data-project attribute
     
-    // Hide the projects panel
-    projectsPanel.style.display = "none";
-    projectsPanel.classList.remove("visible");
+    // If on mobile, trigger the mobile group view
+    if (window.innerWidth <= 768) {
+      // Hide the projects panel and show the mobile group view
+      projectsPanel.style.display = "none";
+      projectsPanel.classList.remove("visible");
 
-    // Trigger the transition for the group (using existing transition logic)
-    activateGroup(projectId);  // Call the existing function to trigger the zoom and group transition
+      openMobileGroup(projectId); // Trigger the mobile group view
+    } else {
+      // For larger screens, handle normal group transition (as usual)
+      projectsPanel.style.display = "none";
+      projectsPanel.classList.remove("visible");
+
+      // Trigger the transition for the group (using existing transition logic)
+      activateGroup(projectId);  // Call the existing function to trigger the zoom and group transition
+    }
   });
 });
 
